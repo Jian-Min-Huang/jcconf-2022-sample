@@ -1,4 +1,4 @@
-package com.example.spring.data.enu
+package com.example.quarkus.data.enu
 
 enum class Gender {
 

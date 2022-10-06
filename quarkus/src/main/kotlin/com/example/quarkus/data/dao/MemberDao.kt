@@ -1,8 +1,9 @@
-package com.example.spring.data.dao
+package com.example.quarkus.data.dao
 
-import com.example.spring.data.po.MemberPo
-import org.springframework.data.jpa.repository.JpaRepository
-import org.springframework.data.jpa.repository.JpaSpecificationExecutor
+import com.example.quarkus.data.po.MemberPo
+import io.quarkus.hibernate.orm.panache.kotlin.PanacheRepository
+import javax.enterprise.context.ApplicationScoped
 
-interface MemberDao : JpaRepository<MemberPo, Long>, JpaSpecificationExecutor<MemberPo> {
+@ApplicationScoped
+class MemberDao : PanacheRepository<MemberPo> {
 }

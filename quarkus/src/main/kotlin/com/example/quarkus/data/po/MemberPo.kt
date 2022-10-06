@@ -1,28 +1,30 @@
-package com.example.spring.data.po
+package com.example.quarkus.data.po
 
-import com.example.spring.data.enu.Gender
+import com.example.quarkus.data.enu.Gender
 import java.math.BigDecimal
 import javax.persistence.Entity
+import javax.persistence.EnumType
+import javax.persistence.Enumerated
 import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
 import javax.persistence.Id
 import javax.persistence.Table
 
 @Entity
-@Table
+@Table(name = "member")
 data class MemberPo(
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long?,
+    @GeneratedValue
+    val id: Long? = null,
 
     var name: String,
 
     var age: Int,
 
+    @Enumerated(value = EnumType.STRING)
     var gender: Gender,
 
     var balance: BigDecimal,
 
-    var createTime: Long?,
+    var createDate: Long,
 )

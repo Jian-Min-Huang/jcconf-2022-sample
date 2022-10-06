@@ -19,18 +19,18 @@ class MemberController(
 ) {
 
     @GetMapping
-    fun getMember(@RequestParam id: Long): MemberPo =
-        memberDao.getById(id)
+    fun getMember(@RequestParam id: Long) =
+        memberDao.findById(id).get()
 
     @PostMapping
-    fun postMember(@RequestBody memberPo: MemberPo): MemberPo =
+    fun postMember(@RequestBody memberPo: MemberPo) =
         memberDao.save(
             memberPo.copy(
-                createTime = Instant.now().toEpochMilli()
+                createDate = Instant.now().toEpochMilli()
             )
         )
 
     @DeleteMapping("/{id}")
-    fun deleteMember(@PathVariable id: Long): Unit =
+    fun deleteMember(@PathVariable id: Long) =
         memberDao.deleteById(id)
 }
